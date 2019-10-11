@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="home"
+            type="cn.zdh.mvvm.viewModel.Home" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:image="@{home.image}" />
+
+        <ImageView
+            android:layout_marginLeft="30dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:image="@{home.imageHead}" />
+
+
+    </LinearLayout>
+
+</layout>

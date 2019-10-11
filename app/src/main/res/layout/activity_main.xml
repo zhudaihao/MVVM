@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <!--注意layout不要配置宽高属性 -->
+    <!--data就是配置viewModel 即数据-->
+    <!--name 自定义 type为viewModel 类的全类名-->
+    <data>
+
+        <variable
+            name="bean"
+            type="cn.zdh.mvvm.viewModel.Bean" />
+    </data>
+
+    <!--布局代码-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <Button
+            android:text="跳转listView"
+           android:onClick="@{bean.clickToActivity}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:text="跳转recycleView"
+            android:onClick="@{bean.clickToRecycleView}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            tool:text="测试"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`姓名: `+bean.name}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{`密码: `+bean.password}" />
+
+
+        <!--使用自定义属性以app开头 + 自定义属性名 ，没有提示build下-->
+        <!--实现点击效果只需要 在onClick属性里面 引用viewModel对应 定义的点击方法名-->
+        <ImageView
+            android:onClick="@{bean.clickImage}"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            app:phone="@{bean.phone}"/>
+    </LinearLayout>
+
+
+</layout>
