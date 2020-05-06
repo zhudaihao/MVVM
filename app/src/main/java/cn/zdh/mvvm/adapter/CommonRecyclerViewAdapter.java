@@ -32,7 +32,7 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View itemView = null;
         ViewDataBinding viewDataBinding;
-        if (itemView == null) {
+        if (null == itemView) {
             viewDataBinding = DataBindingUtil.inflate(layoutInflater, layoutId, viewGroup, false);
         } else {
             viewDataBinding = DataBindingUtil.getBinding(itemView);
@@ -46,7 +46,9 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
         //赋值
-        myViewHolder.viewDataBinding.setVariable(variableId, list.get(i));
+        myViewHolder.getViewDataBinding().setVariable(variableId, list.get(i));
+        //刷新数据
+        myViewHolder.getViewDataBinding().executePendingBindings();
     }
 
     @Override
@@ -59,6 +61,14 @@ public class CommonRecyclerViewAdapter extends RecyclerView.Adapter<CommonRecycl
 
         public MyViewHolder(@NonNull View itemView, ViewDataBinding viewDataBinding) {
             super(itemView);
+            this.viewDataBinding = viewDataBinding;
+        }
+
+        public ViewDataBinding getViewDataBinding() {
+            return viewDataBinding;
+        }
+
+        public void setViewDataBinding(ViewDataBinding viewDataBinding) {
             this.viewDataBinding = viewDataBinding;
         }
     }
